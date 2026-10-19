@@ -2,7 +2,7 @@
 
 학생의 과제·발표·학습을 위한 프롬프트 작성 도구입니다.
 
-[프롬프트 스튜디오 사용하기](https://kongzzi.github.io/prompt-studio/)
+[프롬프트 스튜디오 사용하기](https://kongzzilab.kr/prompt-studio/)
 
 `index.html`을 브라우저로 열면 바로 실행됩니다. 세 파일을 같은 폴더에 두세요. 설치, 빌드, API 키, 인터넷 연결은 필요하지 않습니다.
 
