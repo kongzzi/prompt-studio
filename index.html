@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="역할, 맥락, 요청을 정리해 나만의 프롬프트를 만드는 도구">
+  <title>프롬프트 스튜디오</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232950e8'/%3E%3Ctext x='9' y='28' font-size='26' fill='white'%3EP%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#editor">입력 영역으로 이동</a>
+  <header class="site-header"><div class="brand"><span class="brand-mark" aria-hidden="true">P<span>↗</span></span><span>프롬프트 스튜디오<small>PROMPT STUDIO</small></span></div><span class="header-note">생각을 정리하고, 정확하게 요청하세요.</span></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">YOUR WORDS, WELL STRUCTURED</p><h1>좋은 질문의 시작.</h1><p>필요한 내용을 채우면, 바로 사용할 수 있는 프롬프트가 완성됩니다.</p></div><span class="step-note">01 입력 <span>―</span> 02 확인 <span>―</span> 03 복사</span></div>
+    <div class="tabs" role="tablist" aria-label="프롬프트 종류">
+      <button id="tab-user" role="tab" aria-selected="true" aria-controls="workspace" data-mode="user"><span class="tab-number">01</span> 사용자 프롬프트<small>지금 요청할 작업</small></button>
+      <button id="tab-system" role="tab" aria-selected="false" aria-controls="workspace" tabindex="-1" data-mode="system"><span class="tab-number">02</span> 개인 맞춤 설정<small>나에게 맞는 응답 방식</small></button>
+      <button id="tab-project" role="tab" aria-selected="false" aria-controls="workspace" tabindex="-1" data-mode="project"><span class="tab-number">03</span> 프로젝트 작업 지침<small>함께 지킬 작업 기준</small></button>
+    </div>
+    <section id="workspace" role="tabpanel" aria-labelledby="tab-user" class="workspace">
+      <section id="editor" class="editor panel" tabindex="-1">
+        <div class="panel-heading"><div><p class="eyebrow">BUILD YOUR PROMPT</p><h2 id="editor-title">사용자 프롬프트</h2></div><button class="button secondary" id="example">예시 불러오기</button></div>
+        <p id="mode-description" class="description"></p>
+        <form id="prompt-form" autocomplete="off"></form>
+        <div class="editor-footer"><span>필요한 항목만 입력해도 괜찮아요.</span><button class="text-button" id="reset">초기화</button></div>
+      </section>
+      <aside class="preview panel" aria-labelledby="preview-title">
+        <div class="panel-heading"><div><p class="eyebrow">READY TO USE</p><h2 id="preview-title">완성된 프롬프트</h2></div><span class="live-label">실시간 미리보기</span></div>
+        <div class="preview-meta"><span id="field-count">0개 항목</span><span id="character-count">0자</span></div>
+        <div class="preview-body"><div id="empty-state"><span class="empty-icon" aria-hidden="true">[&nbsp; ]</span><h3>생각을 한 줄씩 담아보세요.</h3><p>왼쪽에 내용을 입력하면<br>이곳에 프롬프트가 만들어집니다.</p><span>막막하다면 ‘예시 불러오기’로 시작하세요.</span></div><pre id="output" tabindex="0" aria-label="완성된 프롬프트 텍스트" hidden></pre></div>
+        <div class="preview-footer"><button class="button primary" id="copy" disabled>전체 프롬프트 복사 <span aria-hidden="true">↗</span></button><p id="copy-help">복사한 내용을 사용하는 AI의 입력창에 붙여넣으세요.</p><button id="select-output" class="text-button" hidden>텍스트 전체 선택</button></div>
+      </aside>
+    </section>
+    <footer class="page-footer"><span>입력한 내용은 외부로 전송하지 않습니다.</span><span>새로고침하거나 창을 닫으면 작성 내용이 사라집니다.</span></footer>
+  </main>
+  <div id="status" role="status" aria-live="polite" class="toast"></div>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-description"><h2 id="confirm-title">작성 내용을 바꿀까요?</h2><p id="confirm-description"></p><form method="dialog" class="dialog-actions"><button class="button secondary" value="cancel" autofocus>취소</button><button class="button primary" value="confirm" id="confirm-action">계속</button></form></dialog>
+  <noscript><p>이 도구를 사용하려면 브라우저에서 JavaScript를 허용해 주세요.</p></noscript>
+</body>
+</html>
